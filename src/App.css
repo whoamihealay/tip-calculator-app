@@ -1,3 +1,14 @@
+/* 
+I - General Classes
+II - Inputs
+III - Grids
+IV - Flex
+V - Buttons
+VI - Media Queries
+*/
+
+/* General classes */
+
 .App {
   flex-direction: column;
 }
@@ -10,10 +21,30 @@
 .App main {
   flex-direction: column;
   width: 100%;
-  max-width: 23.438rem;
+  max-width: 24rem;
   min-width: 300px;
   border-radius: var(--border-rad);
 }
+
+.calc {
+  padding-inline: 1em;
+}
+
+.totals {
+  margin: 1em;
+  border-radius: var(--border-rad);
+  padding: 1em;
+}
+
+.tip {
+  padding: 1em 0.5em 0.5em 0.5em;
+}
+
+.total {
+  padding: 0.5em 0.5em 2em 0.5em;
+}
+
+/* Inputs */
 
 .App input {
   background-color: var(--clr-lg-cyan-2);
@@ -21,11 +52,69 @@
   text-align: right;
 }
 
+.inputs,
+.custom {
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.inputs {
+  padding-inline: 1em;
+}
+
+.no-zero {
+  color: red;
+}
+
+.no-zero-div {
+  justify-content: space-between;
+}
+
+.yes-people,
+.no-people {
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+  padding-inline: 1em;
+}
+
+.yes-people {
+  border: none;
+}
+
+.no-people {
+  border: 2px solid red;
+}
+
+.input-wrapper {
+  position: relative;
+  margin-top: 0.3em;
+}
+
+.input-icon {
+  position: absolute;
+  left: 3px;
+  top: calc(50% - 0.7rem);
+  color: var(--clr-dg-cyan-2);
+}
+
+/* Grids */
+
 .tip-grid {
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(3, 3rem);
-  margin-top: 1rem;
+  margin-top: 1em;
 }
+
+/* Flex */
+
+.total-flex {
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+/* Buttons */
 
 .btn {
   color: var(--clr-white);
@@ -38,46 +127,8 @@
   color: var(--clr-dark-cyan);
 }
 
-.totals {
-  margin: 1rem;
-  border-radius: var(--border-rad);
-  padding: 1rem;
-}
-
-.calc {
-  padding-inline: 1rem;
-}
-
-.inputs {
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-}
-
-.no-people {
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-  border: 2px solid red;
-}
-
-.no-zero {
-  color: red;
-}
-
-.no-zero-div {
-  justify-content: space-between;
-}
-
-.yes-people {
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-  border: none;
-}
-
 .reset {
-  width: 95%;
+  width: 100%;
   height: 3rem;
   color: var(--clr-dark-cyan);
   background-color: var(--clr-strong-cyan);
@@ -87,30 +138,7 @@
   background-color: var(--clr-lg-cyan-1);
 }
 
-.input-wrapper {
-  position: relative;
-  margin-top: 0.3rem;
-}
-
-.input-icon {
-  position: absolute;
-  left: 3px;
-  top: calc(50% - 0.7rem);
-  color: var(--clr-dg-cyan-2);
-}
-
-.total-flex {
-  justify-content: space-between;
-  padding-bottom: 0;
-}
-
-.tip {
-  padding: 1rem 0.5rem 0.5rem 0.5rem;
-}
-
-.total {
-  padding: 0.5rem 0.5rem 2rem 0.5rem;
-}
+/* Media Queries */
 
 @media screen and (min-width: 1000px) {
   header {
@@ -130,24 +158,24 @@
 
   .totals {
     width: calc(50% - 1rem);
-    margin: 2rem 1rem;
+    margin: 2em 1em;
   }
 
   .tip-grid {
     grid-template-columns: repeat(3, 7.1rem);
     grid-template-rows: repeat(2, 3rem);
-    margin-top: 1rem;
+    margin-top: 1em;
   }
 
   section {
-    margin: 1rem 0;
+    margin: 1em 0;
   }
 
   .total-flex {
-    margin: 1rem 0;
+    margin: 1em 0;
   }
   .reset {
-    margin-top: 7rem;
+    margin-top: 4em;
     width: 100%;
   }
 }

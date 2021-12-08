@@ -3,12 +3,12 @@ import { BsCurrencyDollar, BsPersonFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [bill, setBill] = useState();
-  const [percent, setPercent] = useState();
-  const [custom, setCustom] = useState();
+  const [bill, setBill] = useState(0);
+  const [percent, setPercent] = useState(0);
+  const [custom, setCustom] = useState("");
   const [people, setPeople] = useState(1);
-  const [tip, setTip] = useState();
-  const [total, setTotal] = useState();
+  const [tip, setTip] = useState(0);
+  const [total, setTotal] = useState(0);
   const [style, setStyle] = useState();
 
   const handleMoney = (e) => {
@@ -92,9 +92,11 @@ function App() {
               <input
                 className="inputs"
                 type="number"
-                placeholder=""
+                placeholder="0"
                 value={bill}
                 onChange={handleMoney}
+                min="0"
+                max="99999"
               />
             </div>
           </section>
@@ -132,11 +134,12 @@ function App() {
                 50%
               </button>
               <input
-                className="inputs fs-600 fw-700"
+                className="custom fs-600 fw-700"
                 placeholder="Custom"
                 type="number"
                 value={custom}
                 onChange={handleCustom}
+                min="0"
               ></input>
             </div>
           </section>
@@ -174,7 +177,6 @@ function App() {
             </ul>
             <h1 className="fs-800">${total}</h1>
           </div>
-
           <button className="btn reset text-dark fs-500" onClick={reset}>
             RESET
           </button>
