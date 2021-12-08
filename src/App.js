@@ -78,18 +78,25 @@ function App() {
   return (
     <div className="App flex">
       <header className="fs-600 fw-800">
-        <p className="fs-600 fw-700">SPLI</p>
-        <p className="fs-600 fw-700">TTER</p>
+        <h1 className="fs-600 fw-700">
+          SPLI
+          <br />
+          TTER
+        </h1>
       </header>
       <main className="bg-white container flex">
         <div className="calc">
           <section>
-            <h1>Bill</h1>
+            <h2>Bill</h2>
             <div className="input-wrapper">
               <label className="input-icon">
                 <BsCurrencyDollar />
               </label>
+              <label for="bill" className="sr-only">
+                Bill
+              </label>
               <input
+                name="bill"
                 className="inputs"
                 type="number"
                 placeholder="0"
@@ -101,7 +108,7 @@ function App() {
             </div>
           </section>
           <section>
-            <h1>Select Tip %</h1>
+            <h2>Select Tip %</h2>
             <div className="tip-grid grid text-white fs-700">
               <button
                 className="btn percent bg-dark"
@@ -133,7 +140,11 @@ function App() {
               >
                 50%
               </button>
+              <label for="custom" className="sr-only">
+                Custom percentage
+              </label>
               <input
+                name="custom"
                 className="custom fs-600 fw-700"
                 placeholder="Custom"
                 type="number"
@@ -145,11 +156,15 @@ function App() {
           </section>
           <section>
             <div className="flex no-zero-div">
-              <h1>Number of People</h1>
+              <h2>Number of People</h2>
               {people === 0 && <p className="no-zero fs-200">Can't be zero</p>}
             </div>
             <div className="input-wrapper">
+              <label for="people" className="sr-only">
+                Number of people
+              </label>
               <input
+                name="people"
                 className={style}
                 type="number"
                 onChange={handlePeople}
