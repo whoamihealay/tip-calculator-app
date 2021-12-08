@@ -96,7 +96,7 @@ function App() {
                 Bill
               </label>
               <input
-                name="bill"
+                id="bill"
                 className="inputs"
                 type="number"
                 placeholder="0"
@@ -144,7 +144,7 @@ function App() {
                 Custom percentage
               </label>
               <input
-                name="custom"
+                id="custom"
                 className="custom fs-600 fw-700"
                 placeholder="Custom"
                 type="number"
@@ -164,7 +164,7 @@ function App() {
                 Number of people
               </label>
               <input
-                name="people"
+                id="people"
                 className={style}
                 type="number"
                 onChange={handlePeople}
