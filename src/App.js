@@ -183,14 +183,14 @@ function App() {
               <li className="fw-700">Tip Amount</li>
               <li className="text-light fs-200 fw-700">/ person</li>
             </ul>
-            <h1 className="fs-800">${tip}</h1>
+            <h2 className="fs-800">${tip}</h2>
           </div>
           <div className="total total-flex flex">
             <ul>
               <li className="fw-700">Total</li>
               <li className="text-light fs-200 fw-700">/ person</li>
             </ul>
-            <h1 className="fs-800">${total}</h1>
+            <h2 className="fs-800">${total}</h2>
           </div>
           <button className="btn reset text-dark fs-500" onClick={reset}>
             RESET
