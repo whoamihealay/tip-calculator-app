@@ -27,6 +27,7 @@ function App() {
 
   const handlePercent = (value) => {
     setPercent(value);
+    activeTip(value);
   };
 
   const handleCustom = (e) => {
@@ -60,6 +61,19 @@ function App() {
     }
   };
 
+  const activeTip = (value) => {
+    inactiveAll();
+    const getTip = document.getElementById(value);
+    getTip.style.backgroundColor = "var(--clr-strong-cyan)";
+  };
+
+  const inactiveAll = () => {
+    const resetTip = document.getElementsByName("percent");
+    for (let i = 0; i < resetTip.length; i++) {
+      resetTip[i].style.backgroundColor = "";
+    }
+  };
+
   const reset = () => {
     setBill(0);
     setPercent(0);
@@ -67,6 +81,7 @@ function App() {
     setTip(0);
     setTotal(0);
     setCustom("");
+    inactiveAll();
   };
 
   useEffect(() => {
@@ -111,30 +126,40 @@ function App() {
             <h2>Select Tip %</h2>
             <div className="tip-grid grid text-white fs-700">
               <button
+                id="5"
+                name="percent"
                 className="btn percent bg-dark"
                 onClick={() => handlePercent(5)}
               >
                 5%
               </button>
               <button
+                id="10"
+                name="percent"
                 className="btn percent bg-dark"
                 onClick={() => handlePercent(10)}
               >
                 10%
               </button>
               <button
+                id="15"
+                name="percent"
                 className="btn percent bg-dark"
                 onClick={() => handlePercent(15)}
               >
                 15%
               </button>
               <button
+                id="25"
+                name="percent"
                 className="btn percent bg-dark"
                 onClick={() => handlePercent(25)}
               >
                 25%
               </button>
               <button
+                id="50"
+                name="percent"
                 className="btn percent bg-dark"
                 onClick={() => handlePercent(50)}
               >
