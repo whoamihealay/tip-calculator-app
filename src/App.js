@@ -33,6 +33,7 @@ function App() {
   const handleCustom = (e) => {
     setPercent(parseFloat(e.target.value));
     setCustom(e.target.value);
+    inactiveAll();
   };
 
   const tipCalc = () => {
