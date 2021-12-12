@@ -13,8 +13,6 @@ function App() {
 
   const handleMoney = (e) => {
     setBill(parseFloat(e.target.value));
-    tipCalc();
-    totalCalc();
   };
 
   const handlePeople = (e) => {
@@ -34,32 +32,6 @@ function App() {
     setPercent(parseFloat(e.target.value));
     setCustom(e.target.value);
     inactiveAll();
-  };
-
-  const tipCalc = () => {
-    const result = (bill * percent) / 100 / people;
-    if (isNaN(result) || people === 0) {
-      setTip("0.00");
-    } else {
-      setTip(result.toFixed(2));
-    }
-  };
-
-  const totalCalc = () => {
-    let result = (bill + (bill * percent) / 100) / people;
-    if (isNaN(result) || people === 0) {
-      setTotal("0.00");
-    } else {
-      setTotal(result.toFixed(2));
-    }
-  };
-
-  const impossible = () => {
-    if (people === 0) {
-      setStyle("no-people");
-    } else {
-      setStyle("yes-people");
-    }
   };
 
   const activeTip = (value) => {
@@ -86,10 +58,30 @@ function App() {
   };
 
   useEffect(() => {
-    tipCalc();
-    totalCalc();
-    impossible();
-  });
+    const result = (bill * percent) / 100 / people;
+    if (isNaN(result) || people === 0) {
+      setTip("0.00");
+    } else {
+      setTip(result.toFixed(2));
+    }
+  }, [bill, percent, people]);
+
+  useEffect(() => {
+    const result = (bill + (bill * percent) / 100) / people;
+    if (isNaN(result) || people === 0) {
+      setTotal("0.00");
+    } else {
+      setTotal(result.toFixed(2));
+    }
+  }, [bill, percent, people]);
+
+  useEffect(() => {
+    if (people === 0) {
+      setStyle("no-people");
+    } else {
+      setStyle("yes-people");
+    }
+  }, [people]);
 
   return (
     <div className="App flex">
