@@ -3,6 +3,7 @@ import { BsCurrencyDollar, BsPersonFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
 
 function App() {
+  // All states variables.
   const [bill, setBill] = useState(0);
   const [percent, setPercent] = useState(0);
   const [custom, setCustom] = useState("");
@@ -11,10 +12,12 @@ function App() {
   const [total, setTotal] = useState(0);
   const [style, setStyle] = useState();
 
+  // When the bill is inputed, update the state.
   const handleMoney = (e) => {
     setBill(parseFloat(e.target.value));
   };
 
+  // When the number of people is inputed, update the state
   const handlePeople = (e) => {
     if (e.target.value < 0) {
       setPeople(0);
@@ -23,31 +26,21 @@ function App() {
     }
   };
 
+  // When the predefined tip percentage is clicked, update the state and background color.
   const handlePercent = (value) => {
     setPercent(value);
     activeTip(value);
   };
 
+  // When a custom tip amount is inputed, update the state and reset the background of predefined tip percentages.
   const handleCustom = (e) => {
     setPercent(parseFloat(e.target.value));
     setCustom(e.target.value);
     inactiveAll();
   };
 
-  const activeTip = (value) => {
-    inactiveAll();
-    const getTip = document.getElementById(value);
-    getTip.style.backgroundColor = "var(--clr-strong-cyan)";
-  };
-
-  const inactiveAll = () => {
-    const resetTip = document.getElementsByName("percent");
-    for (let i = 0; i < resetTip.length; i++) {
-      resetTip[i].style.backgroundColor = "";
-    }
-  };
-
-  const reset = () => {
+  // When the reset button is clicked, reset the state to intial values.
+  const handleReset = () => {
     setBill(0);
     setPercent(0);
     setPeople(1);
@@ -57,6 +50,22 @@ function App() {
     inactiveAll();
   };
 
+  // When called, change the background of the predefined tip value
+  const activeTip = (value) => {
+    inactiveAll();
+    const getTip = document.getElementById(value);
+    getTip.style.backgroundColor = "var(--clr-strong-cyan)";
+  };
+
+  // When called reset the background of all predefined tip buttons to intial state.
+  const inactiveAll = () => {
+    const resetTip = document.getElementsByName("percent");
+    for (let i = 0; i < resetTip.length; i++) {
+      resetTip[i].style.backgroundColor = "";
+    }
+  };
+
+  // When the bill, the tip percentage or the number people change: Recalculate the the tip amount
   useEffect(() => {
     const result = (bill * percent) / 100 / people;
     if (isNaN(result) || people === 0) {
@@ -66,6 +75,7 @@ function App() {
     }
   }, [bill, percent, people]);
 
+  // When the bill, the tip percentage or the number of people change: Recalculate the total amount
   useEffect(() => {
     const result = (bill + (bill * percent) / 100) / people;
     if (isNaN(result) || people === 0) {
@@ -75,6 +85,7 @@ function App() {
     }
   }, [bill, percent, people]);
 
+  // When the number of people changes, check if the number if equal to 0.
   useEffect(() => {
     if (people === 0) {
       setStyle("no-people");
@@ -210,7 +221,7 @@ function App() {
             </ul>
             <h2 className="fs-800">${total}</h2>
           </div>
-          <button className="btn reset text-dark fs-500" onClick={reset}>
+          <button className="btn reset text-dark fs-500" onClick={handleReset}>
             RESET
           </button>
         </div>
