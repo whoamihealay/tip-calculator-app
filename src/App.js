@@ -1,6 +1,7 @@
 import "./App.css";
 import { BsCurrencyDollar, BsPersonFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
+import Percentage from "./components/Percentage";
 
 function App() {
   // All states variables.
@@ -14,7 +15,11 @@ function App() {
 
   // When the bill is inputed, update the state.
   const handleMoney = (e) => {
-    setBill(parseFloat(e.target.value));
+    if (e.target.value >= 99999) {
+      setBill(parseFloat(99999));
+    } else {
+      setBill(parseFloat(e.target.value));
+    }
   };
 
   // When the number of people is inputed, update the state
@@ -44,8 +49,8 @@ function App() {
     setBill(0);
     setPercent(0);
     setPeople(1);
-    setTip(0);
-    setTotal(0);
+    setTip(parseFloat(0).toFixed(2));
+    setTotal(parseFloat(0).toFixed(2));
     setCustom("");
     inactiveAll();
   };
@@ -64,6 +69,15 @@ function App() {
       resetTip[i].style.backgroundColor = "";
     }
   };
+
+  // When the number of people changes, check if the number if equal to 0.
+  useEffect(() => {
+    if (people === 0) {
+      setStyle("no-people");
+    } else {
+      setStyle("yes-people");
+    }
+  }, [people]);
 
   // When the bill, the tip percentage or the number people change: Recalculate the the tip amount
   useEffect(() => {
@@ -84,15 +98,6 @@ function App() {
       setTotal(result.toFixed(2));
     }
   }, [bill, percent, people]);
-
-  // When the number of people changes, check if the number if equal to 0.
-  useEffect(() => {
-    if (people === 0) {
-      setStyle("no-people");
-    } else {
-      setStyle("yes-people");
-    }
-  }, [people]);
 
   return (
     <div className="App flex">
@@ -129,46 +134,11 @@ function App() {
           <section>
             <h2>Select Tip %</h2>
             <div className="tip-grid grid text-white fs-700">
-              <button
-                id="5"
-                name="percent"
-                className="btn percent bg-dark"
-                onClick={() => handlePercent(5)}
-              >
-                5%
-              </button>
-              <button
-                id="10"
-                name="percent"
-                className="btn percent bg-dark"
-                onClick={() => handlePercent(10)}
-              >
-                10%
-              </button>
-              <button
-                id="15"
-                name="percent"
-                className="btn percent bg-dark"
-                onClick={() => handlePercent(15)}
-              >
-                15%
-              </button>
-              <button
-                id="25"
-                name="percent"
-                className="btn percent bg-dark"
-                onClick={() => handlePercent(25)}
-              >
-                25%
-              </button>
-              <button
-                id="50"
-                name="percent"
-                className="btn percent bg-dark"
-                onClick={() => handlePercent(50)}
-              >
-                50%
-              </button>
+              <Percentage id={5} handle={handlePercent} />
+              <Percentage id={10} handle={handlePercent} />
+              <Percentage id={15} handle={handlePercent} />
+              <Percentage id={25} handle={handlePercent} />
+              <Percentage id={50} handle={handlePercent} />
               <label for="custom" className="sr-only">
                 Custom percentage
               </label>
