@@ -64,7 +64,7 @@ h5,
 h6,
 p {
   font-weight: 400;
-  font-size: var(--fs-300);
+  font-size: var(--fs-400);
 }
 
 ul,
@@ -83,11 +83,15 @@ a {
 body,
 .App,
 #root {
+  min-height: 100vh;
+}
+
+body {
+  background-color: var(--clr-lg-cyan-1);
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
   color: var(--clr-dark-cyan);
   line-height: 1.5;
-  min-height: 100vh;
 }
 
 .App {
@@ -128,35 +132,6 @@ select {
 /* ********* */
 
 /* General utils */
-
-.flex {
-  display: flex;
-  gap: var(--gap, 1rem);
-}
-
-.row {
-  flex-direction: row;
-}
-
-.column {
-  flex-direction: column;
-}
-
-.grid {
-  display: grid;
-  gap: var(--gap, 1rem);
-}
-
-.btn {
-  border-radius: 0.5rem;
-  border-style: none;
-}
-
-.container {
-  padding-inline: 1em;
-  margin-inline: auto;
-  max-width: 80rem;
-}
 
 .sr-only {
   position: absolute;

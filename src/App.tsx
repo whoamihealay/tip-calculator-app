@@ -1,9 +1,11 @@
-import "./App.css";
 import { useState, useEffect } from "react";
 import Totals from "./components/Totals";
 import Percents from "./components/Percents";
 import People from "./components/People";
 import Bill from "./components/Bill";
+import { H1 } from "./components/styles/Titles.styled";
+import { AppContainer, Main } from "./components/styles/Container.styled";
+import { Footer } from "./components/styles/Footer.styled";
 
 function App() {
   // State
@@ -119,15 +121,13 @@ function App() {
   }, [inputs.bill, inputs.percent, inputs.people]);
 
   return (
-    <div className="App container">
-      <header className="header">
-        <h1 className="header__title">
-          SPLI
-          <br />
-          TTER
-        </h1>
-      </header>
-      <main className="main container">
+    <AppContainer className="App">
+      <H1>
+        SPLI
+        <br />
+        TTER
+      </H1>
+      <Main>
         <div>
           <Bill inputs={inputs} handleInputs={handleInputs} />
           <Percents
@@ -138,8 +138,27 @@ function App() {
           <People inputs={inputs} handleInputs={handleInputs} />
         </div>
         <Totals outputs={outputs} handleReset={handleReset} />
-      </main>
-    </div>
+      </Main>
+      <Footer>
+        Challenge by{" "}
+        <a
+          href="https://www.frontendmentor.io?ref=challenge"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Frontend Mentor
+        </a>
+        . Coded by{" "}
+        <a
+          href="https://www.frontendmentor.io/profile/whoamihealay"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Andrew
+        </a>
+        .
+      </Footer>
+    </AppContainer>
   );
 }
 

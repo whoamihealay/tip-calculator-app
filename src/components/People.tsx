@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { BsPersonFill } from "react-icons/bs";
+import { Flex } from "./styles/Flex.styled";
+import { InputWrapper, PeopleInput } from "./styles/Input.styled";
+import { NoPeople } from "./styles/Text.styled";
 
 type Props = {
   inputs: {
@@ -14,27 +17,27 @@ type Props = {
 };
 
 const People = ({ inputs, handleInputs }: Props) => {
-  const [style, setStyle] = useState("");
+  const [noPeople, setNoPeople] = useState<boolean>(false);
 
   // When the number of people changes, check if the number if equal to 0.
   useEffect(() => {
     if (inputs.people === 0) {
-      setStyle("no-people");
+      setNoPeople(true);
     } else {
-      setStyle("yes-people");
+      setNoPeople(false);
     }
   }, [inputs.people]);
 
   return (
     <section>
-      <div className="flex no-zero-div">
+      <Flex>
         <h2>Number of People</h2>
-        {inputs.people === 0 && <p className="no-zero fs-200">Can't be zero</p>}
-      </div>
-      <div className="input__wrapper">
-        <input
+        {noPeople && <NoPeople>Can't be zero</NoPeople>}
+      </Flex>
+      <InputWrapper>
+        <PeopleInput
+          isPeople={noPeople}
           id="people"
-          className={style}
           type="number"
           onChange={handleInputs}
           value={inputs.people}
@@ -43,7 +46,7 @@ const People = ({ inputs, handleInputs }: Props) => {
         <span className="input__icon">
           <BsPersonFill />
         </span>
-      </div>
+      </InputWrapper>
     </section>
   );
 };

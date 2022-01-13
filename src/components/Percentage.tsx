@@ -1,3 +1,5 @@
+import { PercentBtn } from "./styles/Button.styled";
+
 type Props = {
   id: number;
   handle: (value: number) => void;
@@ -5,14 +7,9 @@ type Props = {
 
 const Percentage = ({ id, handle }: Props) => {
   return (
-    <button
-      id={id.toString()}
-      name="percent"
-      className="btn percent bg-dark on"
-      onClick={() => handle(id)}
-    >
+    <PercentBtn id={id.toString()} name="percent" onClick={() => handle(id)}>
       {id}%
-    </button>
+    </PercentBtn>
   );
 };
 

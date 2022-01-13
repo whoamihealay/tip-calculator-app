@@ -1,4 +1,6 @@
 import Percentage from "./Percentage";
+import { Grid } from "./styles/Grid.styled";
+import { Input } from "./styles/Input.styled";
 
 type Props = {
   inputs: {
@@ -17,22 +19,21 @@ const Percents = ({ inputs, handleInputs, handlePercent }: Props) => {
   return (
     <section>
       <h2>Select Tip %</h2>
-      <div className="tip-grid grid text-white fs-700">
+      <Grid>
         <Percentage id={5} handle={handlePercent} />
         <Percentage id={10} handle={handlePercent} />
         <Percentage id={15} handle={handlePercent} />
         <Percentage id={25} handle={handlePercent} />
         <Percentage id={50} handle={handlePercent} />
-        <input
+        <Input
           id="percent"
-          className="custom fs-600 fw-700"
           placeholder="Custom"
           type="number"
           value={inputs.percent}
           onChange={handleInputs}
           min="0"
-        ></input>
-      </div>
+        />
+      </Grid>
     </section>
   );
 };

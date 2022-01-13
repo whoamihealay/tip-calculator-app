@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Btn } from "./styles/Button.styled";
 
 const Section = styled.section`
   border-radius: 1rem;
@@ -31,23 +32,6 @@ const Amounts = styled.div`
     color: hsl(172, 67%, 45%);
     font-size: 2.225rem;
     font-weight: 700;
-  }
-`;
-
-const Button = styled.button`
-  border-radius: 0.5rem;
-  border-style: none;
-  color: var(--clr-white);
-  font-size: 1.225rem;
-  font-weight: 700;
-  cursor: pointer;
-  width: 100%;
-  height: 3rem;
-  color: hsl(183, 100%, 15%);
-  background-color: hsl(172, 67%, 45%);
-  &:hover,
-  &:focus {
-    background-color: #96fafa;
   }
 `;
 
@@ -86,7 +70,7 @@ const Totals = ({ outputs, handleReset }: Props) => {
           <h2>${outputs.total}</h2>
         </Amounts>
       </Flex>
-      <Button onClick={handleReset}>RESET</Button>
+      <Btn onClick={handleReset}>RESET</Btn>
     </Section>
   );
 };
