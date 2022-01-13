@@ -9,10 +9,13 @@ VI - Media Queries
 
 /* General classes */
 
+body {
+  background-color: var(--clr-lg-cyan-1);
+}
+
 .App {
   display: grid;
   place-items: center;
-  background-color: var(--clr-lg-cyan-1);
 }
 
 .header__title {
@@ -40,14 +43,6 @@ VI - Media Queries
 .text-sm-white {
   color: var(--clr-white);
   font-size: var(--fs-200);
-}
-
-/* Sections */
-
-.totals {
-  border-radius: var(--border-rad);
-  background-color: var(--clr-dark-cyan);
-  padding: 1em;
 }
 
 /* Inputs */
@@ -139,23 +134,10 @@ VI - Media Queries
 
 /* Buttons */
 
-.btn {
-  color: var(--clr-white);
-  font-weight: 700;
-  cursor: pointer;
-}
-
 .btn:active,
 .btn:hover {
   background-color: var(--clr-strong-cyan);
   color: var(--clr-dark-cyan);
-}
-
-.reset {
-  width: 100%;
-  height: 3rem;
-  color: var(--clr-dark-cyan);
-  background-color: var(--clr-strong-cyan);
 }
 
 .reset:active,
@@ -172,18 +154,8 @@ VI - Media Queries
   }
 
   .main {
-    flex-direction: row;
-    max-width: 57.5rem;
-    height: 30rem;
-  }
-
-  .container {
-    padding-inline: 1em;
-  }
-
-  .totals {
-    width: calc(50% - 1rem);
-    margin: 2em 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .tip-grid {
@@ -192,13 +164,6 @@ VI - Media Queries
     margin-top: 1em;
   }
 
-  section {
-    margin: 1em 0;
-  }
-
-  .total-flex {
-    margin: 1em 0;
-  }
   .reset {
     margin-top: 4em;
     width: 100%;
