@@ -5,7 +5,7 @@ import People from "./components/People";
 import Bill from "./components/Bill";
 import { H1 } from "./components/styles/Titles.styled";
 import { AppContainer, Main } from "./components/styles/Container.styled";
-import { Footer } from "./components/styles/Footer.styled";
+import Footer from "./components/Footer";
 
 function App() {
   // State
@@ -139,25 +139,7 @@ function App() {
         </div>
         <Totals outputs={outputs} handleReset={handleReset} />
       </Main>
-      <Footer>
-        Challenge by{" "}
-        <a
-          href="https://www.frontendmentor.io?ref=challenge"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Frontend Mentor
-        </a>
-        . Coded by{" "}
-        <a
-          href="https://www.frontendmentor.io/profile/whoamihealay"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Andrew
-        </a>
-        .
-      </Footer>
+      <Footer />
     </AppContainer>
   );
 }
