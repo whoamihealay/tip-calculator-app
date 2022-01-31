@@ -10,4 +10,7 @@ export const StyledFooter = styled.footer`
   a {
     color: hsl(228, 45%, 44%);
   }
+  @media screen and (max-width: 30em) {
+    display: none;
+  }
 `;

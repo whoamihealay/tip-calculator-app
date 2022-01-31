@@ -31,7 +31,6 @@ const Percents = ({ inputs, handleInputs, handlePercent }: Props) => {
           type="number"
           value={inputs.percent}
           onChange={handleInputs}
-          min="0"
         />
       </Grid>
     </section>

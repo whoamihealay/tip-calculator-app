@@ -21,19 +21,16 @@ function App() {
 
   // Handlers
   const handleInputs = (e: { target: { id: string; value: string } }) => {
-    if (e.target.value === "") {
+    if (e.target.value === "" || e.target.value === null) {
       setInputs((prev) => ({
         ...prev,
-        [e.target.id]: 1,
+        [e.target.id]: 0,
       }));
     } else {
       setInputs((prev) => ({
         ...prev,
         [e.target.id]: parseFloat(e.target.value),
       }));
-    }
-    if (e.target.id === "percent") {
-      inactiveAll();
     }
   };
 
@@ -43,7 +40,6 @@ function App() {
       ...prev,
       percent: value,
     }));
-    activeTip(value.toString());
   };
 
   // When the reset button is clicked, reset the state to intial values.
@@ -53,14 +49,6 @@ function App() {
       percent: 0,
       people: 1,
     });
-    inactiveAll();
-  };
-
-  // When called, change the background of the predefined tip value
-  const activeTip = (value: string) => {
-    inactiveAll();
-    const getTip = document.getElementById(value);
-    getTip!.style.backgroundColor = "var(--clr-strong-cyan)";
   };
 
   // When called reset the background of all predefined tip buttons to intial state.
@@ -70,6 +58,16 @@ function App() {
       resetTip[i].style.backgroundColor = "";
     }
   };
+
+  useEffect(() => {
+    let getTip = document.getElementById(inputs.percent.toString());
+    if (getTip !== null) {
+      inactiveAll();
+      getTip.style.backgroundColor = "var(--clr-strong-cyan)";
+    } else {
+      inactiveAll();
+    }
+  }, [inputs.percent]);
 
   // set bill limit to 99 999 (Purely for overflow purposes)
   useEffect(() => {
