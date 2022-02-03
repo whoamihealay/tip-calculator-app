@@ -4,7 +4,7 @@ import { Flex } from "./styles/Flex.styled";
 import { InputWrapper, PeopleInput } from "./styles/Input.styled";
 import { NoPeople } from "./styles/Text.styled";
 
-type Props = {
+interface IProps {
   inputs: {
     people: number;
   };
@@ -14,19 +14,10 @@ type Props = {
       value: string;
     };
   }) => void;
-};
+}
 
-const People = ({ inputs, handleInputs }: Props) => {
-  const [noPeople, setNoPeople] = useState<boolean>(false);
-
-  // When the number of people changes, check if the number if equal to 0.
-  useEffect(() => {
-    if (inputs.people === 0) {
-      setNoPeople(true);
-    } else {
-      setNoPeople(false);
-    }
-  }, [inputs.people]);
+const People = ({ inputs, handleInputs }: IProps) => {
+  let noPeople = inputs.people === 0;
 
   return (
     <section>
@@ -36,11 +27,12 @@ const People = ({ inputs, handleInputs }: Props) => {
       </Flex>
       <InputWrapper>
         <PeopleInput
+          aria-label="How many people?"
           isPeople={noPeople}
           id="people"
           type="number"
           onChange={handleInputs}
-          value={inputs.people}
+          value={inputs.people ? inputs.people : ""}
           min="0"
         />
         <span className="input__icon">

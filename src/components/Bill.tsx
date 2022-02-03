@@ -22,10 +22,11 @@ const Bill = ({ inputs, handleInputs }: Props) => {
           <BsCurrencyDollar />
         </span>
         <Input
+          aria-label="Your bill amount"
           id="bill"
           type="number"
           placeholder="0"
-          value={inputs.bill}
+          value={inputs.bill ? inputs.bill : ""}
           onChange={handleInputs}
           min="0"
           max="99999"

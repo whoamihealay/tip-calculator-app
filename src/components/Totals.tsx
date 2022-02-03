@@ -24,7 +24,7 @@ const Flex = styled.div`
 const Amounts = styled.div`
   display: flex;
   justify-content: space-between;
-  & li:nth-child(2) {
+  & span {
     font-size: 0.875rem;
     color: hsl(184, 14%, 56%);
   }
@@ -35,39 +35,41 @@ const Amounts = styled.div`
   }
 `;
 
-type Props = {
+interface IProps {
   outputs: {
     tip: number;
     total: number;
   };
   handleReset: () => void;
-};
+}
 
-const Totals = ({ outputs, handleReset }: Props) => {
+const Totals = ({ outputs, handleReset }: IProps) => {
   return (
     <Section>
       <Flex>
         <Amounts>
-          <ul>
-            <li>
-              <b>Tip Amount</b>
-            </li>
-            <li>
+          <p>
+            <b>Tip Amount</b>
+            <br />
+            <span>
               <b>/ person</b>
-            </li>
-          </ul>
-          <h2>${outputs.tip}</h2>
+            </span>
+          </p>
+          <h2 aria-label="tip amount per person" data-test="total-tip-amount">
+            ${outputs.tip}
+          </h2>
         </Amounts>
         <Amounts>
-          <ul>
-            <li>
-              <b>Total</b>
-            </li>
-            <li>
+          <p>
+            <b>Total</b>
+            <br />
+            <span>
               <b>/ person</b>
-            </li>
-          </ul>
-          <h2>${outputs.total}</h2>
+            </span>
+          </p>
+          <h2 aria-label="total amount per person" data-test="total-amount">
+            ${outputs.total}
+          </h2>
         </Amounts>
       </Flex>
       <Btn onClick={handleReset}>RESET</Btn>
