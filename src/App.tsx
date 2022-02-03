@@ -6,6 +6,7 @@ import Bill from "./components/Bill";
 import { H1 } from "./components/styles/Titles.styled";
 import { AppContainer, Main } from "./components/styles/Container.styled";
 import Footer from "./components/Footer";
+import "./index.css";
 
 function App() {
   // State
@@ -60,7 +61,7 @@ function App() {
   };
 
   useEffect(() => {
-    let getTip = document.getElementById(inputs.percent.toString());
+    const getTip = document.getElementById(inputs.percent.toString());
     if (getTip !== null) {
       inactiveAll();
       getTip.style.backgroundColor = "var(--clr-strong-cyan)";

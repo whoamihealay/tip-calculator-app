@@ -1,1 +1,6 @@
-{}
+{
+  "testFiles": "**/*.spec.jsx",
+  "componentFolder": "cypress",
+  "viewportWidth": 360,
+  "viewportHeight": 800
+}

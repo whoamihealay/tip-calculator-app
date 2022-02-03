@@ -1,6 +1,9 @@
+import { mount } from "@cypress/react";
+import App from "../../src/App";
+
 describe("tip", () => {
   it("user can calculate the tip total and total amount per person", () => {
-    cy.visit("http://localhost:3000");
+    mount(<App />);
     cy.findByRole("spinbutton", {
       name: /your bill amount/i,
     }).type(100);
