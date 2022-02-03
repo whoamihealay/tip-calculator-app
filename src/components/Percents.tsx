@@ -2,7 +2,7 @@ import Percentage from "./Percentage";
 import { Grid } from "./styles/Grid.styled";
 import { Input } from "./styles/Input.styled";
 
-type Props = {
+interface IProps {
   inputs: {
     percent: number;
   };
@@ -13,9 +13,9 @@ type Props = {
     };
   }) => void;
   handlePercent: (value: number) => void;
-};
+}
 
-const Percents = ({ inputs, handleInputs, handlePercent }: Props) => {
+const Percents = ({ inputs, handleInputs, handlePercent }: IProps) => {
   return (
     <section>
       <h2>Select Tip %</h2>
@@ -26,10 +26,11 @@ const Percents = ({ inputs, handleInputs, handlePercent }: Props) => {
         <Percentage id={25} handle={handlePercent} />
         <Percentage id={50} handle={handlePercent} />
         <Input
+          aria-label="Custom tip percent"
           id="percent"
           placeholder="Custom"
           type="number"
-          value={inputs.percent}
+          value={inputs.percent ? inputs.percent : ""}
           onChange={handleInputs}
         />
       </Grid>

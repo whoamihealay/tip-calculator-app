@@ -1,11 +1,11 @@
 import { PercentBtn } from "./styles/Button.styled";
 
-type Props = {
+interface IProps {
   id: number;
   handle: (value: number) => void;
-};
+}
 
-const Percentage = ({ id, handle }: Props) => {
+const Percentage = ({ id, handle }: IProps) => {
   return (
     <PercentBtn id={id.toString()} name="percent" onClick={() => handle(id)}>
       {id}%

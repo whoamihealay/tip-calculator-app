@@ -6,6 +6,7 @@ import Bill from "./components/Bill";
 import { H1 } from "./components/styles/Titles.styled";
 import { AppContainer, Main } from "./components/styles/Container.styled";
 import Footer from "./components/Footer";
+import "./index.css";
 
 function App() {
   // State
@@ -21,7 +22,7 @@ function App() {
 
   // Handlers
   const handleInputs = (e: { target: { id: string; value: string } }) => {
-    if (e.target.value === "" || e.target.value === null) {
+    if (e.target.value === "" || typeof e.target.value === null) {
       setInputs((prev) => ({
         ...prev,
         [e.target.id]: 0,
@@ -60,7 +61,7 @@ function App() {
   };
 
   useEffect(() => {
-    let getTip = document.getElementById(inputs.percent.toString());
+    const getTip = document.getElementById(inputs.percent.toString());
     if (getTip !== null) {
       inactiveAll();
       getTip.style.backgroundColor = "var(--clr-strong-cyan)";
@@ -79,7 +80,8 @@ function App() {
     }
   }, [inputs.bill]);
 
-  // When the bill, the tip percentage or the number people change: Recalculate the the tip amount
+  // When the bill, the tip percentage or the number people change
+  // Recalculate the the tip amount
   useEffect(() => {
     const result = parseFloat(
       ((inputs.bill * inputs.percent) / 100 / inputs.people).toFixed(2)
@@ -97,7 +99,8 @@ function App() {
     }
   }, [inputs.bill, inputs.people, inputs.percent]);
 
-  // When the bill, the tip percentage or the number of people change: Recalculate the total amount
+  // When the bill, the tip percentage or the number of people change,
+  // Recalculate the total amount
   useEffect(() => {
     const result = parseFloat(
       (
