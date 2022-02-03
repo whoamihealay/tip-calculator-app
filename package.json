@@ -16,7 +16,7 @@
     "test": "jest",
     "test:e2e": "cypress open-ct",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "prepare": "husky install"
   },
   "eslintConfig": {
